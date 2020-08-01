@@ -79,16 +79,19 @@ class Contact extends Component {
                                     <Control.text model='.firstname' id='firstname' name='firstname'
                                                   placeholder='First name'
                                                   className='form-control'
-                                                  validators={{required, minLength: minLength(3), maxLength: maxLength(15)}}/>
-                                                  <Errors className='text-danger'
-                                                          model='.firstname'
-                                                          show='touched'
-                                                          messages={{
-                                                              required: 'Required',
-                                                              minLength: 'Must be greater then 2 characters',
-                                                              maxLength: 'Must be 15 characters or less'
-                                                          }}
-                                                  />
+                                                  validators={{
+                                                      required,
+                                                      minLength: minLength(3),
+                                                      maxLength: maxLength(15)
+                                                  }}/>
+                                    <Errors className='text-danger'
+                                            model='.firstname'
+                                            show='touched'
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater then 2 characters',
+                                                maxLength: 'Must be 15 characters or less'
+                                            }}/>
 
                                 </Col>
                             </Row>
@@ -98,7 +101,11 @@ class Contact extends Component {
                                     <Control.text model='.lastname' id='lastname' name='lastname'
                                                   placeholder='Last name'
                                                   className='form-control'
-                                                  validators={{required, minLength: minLength(3), maxLength: maxLength(15)}}/>
+                                                  validators={{
+                                                      required,
+                                                      minLength: minLength(3),
+                                                      maxLength: maxLength(15)
+                                                  }}/>
                                     <Errors className='text-danger'
                                             model='.lastname'
                                             show='touched'
@@ -115,7 +122,12 @@ class Contact extends Component {
                                     <Control.text model='.telnum' id='telnum' name='telnum'
                                                   placeholder='Your tel. number'
                                                   className='form-control'
-                                                  validators={{required, minLength: minLength(3), maxLength: maxLength(15), isNumber}}/>
+                                                  validators={{
+                                                      required,
+                                                      minLength: minLength(3),
+                                                      maxLength: maxLength(15),
+                                                      isNumber
+                                                  }}/>
                                     <Errors className='text-danger'
                                             model='.telnum'
                                             show='touched'
@@ -123,7 +135,7 @@ class Contact extends Component {
                                                 required: 'Required',
                                                 minLength: 'Must be greater then 2 numbers',
                                                 maxLength: 'Must be 15 numbers or less',
-isNumber: 'Must be a number'
+                                                isNumber: 'Must be a number'
                                             }}/>
                                 </Col>
                             </Row>
@@ -148,7 +160,7 @@ isNumber: 'Must be a number'
                                     <div className='form-check'>
                                         <Label check>
                                             <Control.checkbox model='.agree' name='agree'
-                                                           className='form-check-input'/> {' '}
+                                                              className='form-check-input'/> {' '}
                                             <strong>May we contact you?</strong>
                                         </Label>
                                     </div>
