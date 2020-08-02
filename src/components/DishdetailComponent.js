@@ -33,7 +33,7 @@ class CommentForm extends Component {
         this.state = {
             isModal: false
         }
-        this.formSubmit = this.formSubmit.bind(this)
+        
         this.modal = this.modal.bind(this)
     }
 
