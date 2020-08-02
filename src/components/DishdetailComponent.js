@@ -14,7 +14,8 @@ import {
     ModalFooter, Col, Row, Label
 } from 'reactstrap';
 import {Link} from 'react-router-dom'
-import {Control, Errors, Form, LocalForm} from "react-redux-form";
+import {Control, Errors, LocalForm} from "react-redux-form";
+import {Loading} from './LoadingComponent'
 
 
 /*const CommentForm = () => {
@@ -172,9 +173,26 @@ function RenderComments({comments, addComment, dishId}) {
 
 const Dishdetail = (props) => {
 
-    console.log('Dishdetail render')
+    if (props.isLoading) {
+        return (
+            <div className='container'>
+                <div className='row'>
+                    <Loading />
+                </div>
+            </div>
+        )
+    }
+    else if (props.errMess) {
+        return (
+            <div className='container'>
+                <div className='row'>
+                   <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        )
+    }
 
-    if (props.dish != null)
+    else if (props.dish != null)
         return (
             <div className="container">
                 <div className='row'>
