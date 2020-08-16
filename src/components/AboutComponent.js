@@ -8,6 +8,10 @@ import {
     Media
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {Loading} from "./LoadingComponent";
+import {baseUrl} from "./shared/baseUrl";
+
+
 
 function About (props) {
 
@@ -15,7 +19,7 @@ function About (props) {
         return (
             <Media tag='ul' className='list-unstyled'>
                 <Media tag='li'>
-                    <Media className='mr-3' object src={leader.image} alt={leader.name}/>
+                    <Media className='mr-3' object src={baseUrl + leader.image} alt={leader.name} />
                 </Media>
                 <Media body>
                     <h5 className='mt-0 mb-1'>{leader.name}</h5>
@@ -26,12 +30,30 @@ function About (props) {
         )
     }
 
+    function RenderContent({ leaders, isLoading, errMess }) {
+        if (isLoading) {
+            return <Loading />;
+        } else if (errMess) {
+            return <h4>{errMess}</h4>;
+        } else
+            return (
+                <div>
+                    {props.leaders.map(leader => (
+                        <div key={leader.id}>
+                            <RenderLeader key={leader.id} leader={leader} />
+                        </div>
+                    ))}
+                </div>
+            );
+    }
 
-    const leaders = props.leaders.map((leader) => {
+
+
+    {/*const leaders = props.leaders.map((leader) => {
         return (
             <RenderLeader leader={leader}/>
         );
-    });
+    });*/}
 
 
     return (
@@ -96,7 +118,11 @@ function About (props) {
                 </div>
                 <div className="col-12">
                     <Media list>
-                        {leaders}
+                        <RenderContent
+                            leaders={props.leader}
+                            isLoading={props.leaderLoading}
+                            errMess={props.leaderErrMess}
+                        />
                     </Media>
                 </div>
             </div>
